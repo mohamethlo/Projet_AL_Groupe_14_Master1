@@ -9,15 +9,18 @@ import java.security.Key;
 import java.util.Date;
 
 @Service
-public class JwtService {
-    private final String secret = "SECRET_123456789_SECRET_123456789"; // Min 32 caractères
-    private final long expiration = 86400000; // 1 jour
+public class JwtService 
+{
+    private final String secret = "SECRET_123456789_SECRET_123456789"; 
+    private final long expiration = 86400000;
 
-    private Key getSigningKey() {
+    private Key getSigningKey() 
+    {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String username) 
+    {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
@@ -26,7 +29,8 @@ public class JwtService {
                 .compact();
     }
 
-    public String extractUsername(String token) {
+    public String extractUsername(String token) 
+    {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
@@ -35,11 +39,15 @@ public class JwtService {
                 .getSubject();
     }
 
-    public boolean isTokenValid(String token) {
-        try {
+    public boolean isTokenValid(String token) 
+    {
+        try 
+        {
             Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
             return true;
-        } catch (JwtException e) {
+        } 
+        catch (JwtException e) 
+        {
             return false;
         }
     }

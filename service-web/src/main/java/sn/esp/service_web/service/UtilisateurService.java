@@ -4,7 +4,8 @@ import sn.esp.service_web.entity.Utilisateur;
 
 import java.util.List;
 
-public interface UtilisateurService {
+public interface UtilisateurService 
+{
     Utilisateur creer(Utilisateur utilisateur);
     List<Utilisateur> lister();
     Utilisateur modifier(Long id, Utilisateur utilisateur);

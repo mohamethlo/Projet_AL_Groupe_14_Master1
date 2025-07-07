@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthController {
+public class AuthController 
+{
 
     private final AuthenticationManager authManager;
     private final JwtService jwtService;
     private final UtilisateurRepository userRepo;
     private final PasswordEncoder encoder;
 
-    public AuthController(AuthenticationManager authManager, JwtService jwtService,
-                          UtilisateurRepository userRepo, PasswordEncoder encoder) {
+    public AuthController(AuthenticationManager authManager, JwtService jwtService, UtilisateurRepository userRepo, PasswordEncoder encoder) 
+    {
         this.authManager = authManager;
         this.jwtService = jwtService;
         this.userRepo = userRepo;
@@ -25,14 +26,16 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Utilisateur request) {
+    public String login(@RequestBody Utilisateur request) 
+    {
         authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getMotDePasse()));
         return jwtService.generateToken(request.getEmail());
     }
 
     @PostMapping("/register")
-    public Utilisateur register(@RequestBody Utilisateur user) {
+    public Utilisateur register(@RequestBody Utilisateur user) 
+    {
         user.setMotDePasse(encoder.encode(user.getMotDePasse()));
         return userRepo.save(user);
     }

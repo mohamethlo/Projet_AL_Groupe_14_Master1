@@ -6,15 +6,18 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService 
+{
     private final UtilisateurRepository utilisateurRepository;
 
-    public UserDetailsServiceImpl(UtilisateurRepository repo) {
+    public UserDetailsServiceImpl(UtilisateurRepository repo) 
+    {
         this.utilisateurRepository = repo;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException 
+    {
         Utilisateur user = utilisateurRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
         return User.builder()

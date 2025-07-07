@@ -3,13 +3,16 @@ package sn.esp.service_web.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
-@Table(name = "utilisateurs")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Utilisateur 
+public class Categorie 
 {
 
     @Id
@@ -17,14 +20,10 @@ public class Utilisateur
     private Long id;
 
     private String nom;
-    private String prenom;
-    
-    @Column(unique = true, nullable = false)
-    private String email;
 
-    private String motDePasse;
+    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Article> articles;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
 }
 
