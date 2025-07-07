@@ -25,9 +25,36 @@ public class CategorieServiceImpl implements CategorieService
         return categorieRepo.findAll();
     }
 
+    @Override
     public Optional<Categorie> getCategorieById(Long id) 
     {
         return categorieRepo.findById(id);
+    }
+
+    @Override
+    public Categorie save(Categorie categorie) 
+    {
+        return categorieRepo.save(categorie);
+    }
+
+    @Override
+    public Categorie update(Long id, Categorie categorie) 
+    {
+        Categorie existing = categorieRepo.findById(id)
+            .orElseThrow(() -> new RuntimeException("Catégorie introuvable"));
+
+        existing.setNom(categorie.getNom());
+        return categorieRepo.save(existing);
+    }
+
+    @Override
+    public void delete(Long id) 
+    {
+        if (!categorieRepo.existsById(id)) 
+        {
+            throw new RuntimeException("Catégorie introuvable");
+        }
+        categorieRepo.deleteById(id);
     }
 
 }

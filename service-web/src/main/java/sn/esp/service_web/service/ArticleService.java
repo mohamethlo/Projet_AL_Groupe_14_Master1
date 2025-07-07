@@ -10,4 +10,8 @@ public interface ArticleService
     Article getArticleById(Long id);
     List<Article> getArticlesByCategorie(Long categorieId);
     List<Article> getRecentArticles();
+    Article save(Article article);
+    Article update(Long id, Article article);
+    void delete(Long id);
+
 }

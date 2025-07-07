@@ -43,5 +43,35 @@ public class ArticleServiceImpl implements ArticleService
         return articleRepo.findByDatePublicationAfter(seventyTwoHoursAgo);
     }
 
+    @Override
+    public Article save(Article article) 
+    {
+        article.setDatePublication(LocalDateTime.now()); 
+        return articleRepo.save(article);
+    }
+
+    @Override
+    public Article update(Long id, Article article) 
+    {
+        Article existing = articleRepo.findById(id)
+            .orElseThrow(() -> new RuntimeException("Article introuvable"));
+
+        existing.setTitre(article.getTitre());
+        existing.setResume(article.getResume());
+        existing.setContenu(article.getContenu());
+        existing.setCategorie(article.getCategorie());
+        existing.setAuteur(article.getAuteur()); 
+        return articleRepo.save(existing);
+    }
+
+    @Override
+    public void delete(Long id) 
+    {
+        if (!articleRepo.existsById(id)) {
+            throw new RuntimeException("Article introuvable");
+        }
+        articleRepo.deleteById(id);
+    }
+
 }
 

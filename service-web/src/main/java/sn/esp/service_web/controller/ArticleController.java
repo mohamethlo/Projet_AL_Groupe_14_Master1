@@ -2,6 +2,9 @@ package sn.esp.service_web.controller;
 
 import sn.esp.service_web.entity.Article;
 import sn.esp.service_web.service.ArticleService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +44,27 @@ public class ArticleController
     public List<Article> getRecentArticles() 
     {
         return articleService.getRecentArticles();
+    }
+
+    @PostMapping
+    public ResponseEntity<Article> createArticle(@RequestBody Article article) 
+    {
+        Article saved = articleService.save(article);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article article) 
+    {
+        Article updated = articleService.update(id, article);
+        return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable Long id) 
+    {
+        articleService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

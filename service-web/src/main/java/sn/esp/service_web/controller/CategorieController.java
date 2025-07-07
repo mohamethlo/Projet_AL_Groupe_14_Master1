@@ -37,5 +37,26 @@ public class CategorieController
                         .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
+    @PostMapping
+    public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) 
+    {
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(categorieService.save(categorie));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Categorie> updateCategorie(@PathVariable Long id, @RequestBody Categorie categorie) 
+    {
+        return ResponseEntity.ok(categorieService.update(id, categorie));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategorie(@PathVariable Long id) 
+    {
+        categorieService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
 
