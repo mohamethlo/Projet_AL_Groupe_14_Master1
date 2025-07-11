@@ -1,5 +1,5 @@
 const Footer = () => (
-  <footer id="contact" style={{ backgroundColor: '#002147' }} className="text-white pt-4 pb-3 mt-5">
+  <footer id="contact" className="text-white pt-4 pb-3 mt-5 bg-dark">
     <div className="container text-center">
       <h5 className="text-uppercase mb-3">
         École Supérieure Polytechnique

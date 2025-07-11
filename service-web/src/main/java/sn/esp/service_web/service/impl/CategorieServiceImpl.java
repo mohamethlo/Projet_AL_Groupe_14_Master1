@@ -5,6 +5,8 @@ import sn.esp.service_web.repository.CategorieRepository;
 import sn.esp.service_web.service.CategorieService;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -48,12 +50,17 @@ public class CategorieServiceImpl implements CategorieService
     }
 
     @Override
+    @Transactional
     public void delete(Long id) 
     {
-        if (!categorieRepo.existsById(id)) 
+        Categorie categorie = categorieRepo.findById(id)
+            .orElseThrow(() -> new RuntimeException("Catégorie introuvable"));
+
+        if (categorie.getArticles() != null && !categorie.getArticles().isEmpty()) 
         {
-            throw new RuntimeException("Catégorie introuvable");
+            throw new RuntimeException("Impossible de supprimer : cette catégorie est liée à des articles.");
         }
+
         categorieRepo.deleteById(id);
     }
 

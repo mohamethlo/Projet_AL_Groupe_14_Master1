@@ -20,10 +20,10 @@ code {
 
 .sidebar-custom {
   position: fixed;
-  top: 64px; /* 56px (navbar) + 8px d'espacement */
+  top: 64px; 
   left: 0;
   width: 220px;
-  height: calc(100vh - 64px); /* prend le reste de la hauteur */
+  height: calc(100vh - 64px); 
   background-color: #1e282c;
   color: #c2c7d0;
   border-right: 1px solid #4b545c;
@@ -61,5 +61,13 @@ code {
   color: white;
   font-weight: bold;
   border-left: 4px solid #ffffff;
+}
+
+.category-link.active {
+  background-color: #0d6efd;
+  color: white !important;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
 }
 

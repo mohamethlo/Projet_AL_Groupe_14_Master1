@@ -1,5 +1,6 @@
 package sn.esp.service_web.controller;
 
+import sn.esp.service_web.dto.ArticleDto;
 import sn.esp.service_web.entity.Article;
 import sn.esp.service_web.service.ArticleService;
 
@@ -47,16 +48,16 @@ public class ArticleController
     }
 
     @PostMapping
-    public ResponseEntity<Article> createArticle(@RequestBody Article article) 
+    public ResponseEntity<Article> createArticle(@RequestBody ArticleDto dto) 
     {
-        Article saved = articleService.save(article);
+        Article saved = articleService.createFromDto(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody Article article) 
+    public ResponseEntity<Article> updateArticle(@PathVariable Long id, @RequestBody ArticleDto dto) 
     {
-        Article updated = articleService.update(id, article);
+        Article updated = articleService.updateFromDto(id, dto);
         return ResponseEntity.ok(updated);
     }
 
@@ -66,6 +67,4 @@ public class ArticleController
         articleService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }
-
