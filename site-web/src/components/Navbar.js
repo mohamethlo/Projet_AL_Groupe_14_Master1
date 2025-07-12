@@ -48,15 +48,9 @@ const Navbar = () => (
         </ul>
 
         <div className="d-flex">
-          <a className="nav-link text-white mx-2" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a className="nav-link text-white mx-2" href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a className="nav-link text-white mx-2" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-linkedin-in"></i>
-          </a>
+          <Link className="btn btn-outline-light mx-2" to="/login">
+            Se connecter
+          </Link>
         </div>
 
       </div>

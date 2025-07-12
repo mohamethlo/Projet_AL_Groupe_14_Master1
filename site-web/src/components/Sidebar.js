@@ -15,6 +15,25 @@ const Sidebar = () => {
         <>
           <h5 className="text-white mb-3">Fonctionnalités</h5>
           <ul className="list-unstyled mb-4">
+
+          <li className="mb-2">
+            <Link
+              to="/editor"
+              className={`category-link ${isActive('/editor') ? 'active' : ''}`}
+            >
+              <i className="bi bi-journal-text me-2"></i>List articles
+            </Link>
+          </li>
+            
+          <li className="mb-2">
+            <Link
+              to="/editor/nouveau-article"
+              className={`category-link ${isActive('/editor/nouveau-article') ? 'active' : ''}`}
+            >
+              <i className="bi bi-plus-circle me-2"></i>Ajout article
+            </Link>
+          </li>
+
             <li className="mb-2">
               <Link
                 to="/editor/categories"
@@ -23,6 +42,7 @@ const Sidebar = () => {
                 <i className="bi bi-folder2-open me-2"></i>List categories
               </Link>
             </li>
+            
             <li className="mb-2">
               <Link
                 to="/editor/ajouter-categorie"
@@ -31,22 +51,7 @@ const Sidebar = () => {
                 <i className="bi bi-plus-square me-2"></i>Ajout categorie
               </Link>
             </li>
-            <li className="mb-2">
-              <Link
-                to="/editor"
-                className={`category-link ${isActive('/editor') ? 'active' : ''}`}
-              >
-                <i className="bi bi-journal-text me-2"></i>List articles
-              </Link>
-            </li>
-            <li className="mb-2">
-              <Link
-                to="/editor/nouveau-article"
-                className={`category-link ${isActive('/editor/nouveau-article') ? 'active' : ''}`}
-              >
-                <i className="bi bi-plus-circle me-2"></i>Ajout article
-              </Link>
-            </li>
+            
           </ul>
         </>
       )}
