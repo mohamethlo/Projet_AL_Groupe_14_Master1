@@ -1,52 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.actualite</groupId>
-    <artifactId>client-app</artifactId>
+    <groupId>sn.esp</groupId>
+    <artifactId>actualite-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <!-- JAX-WS pour SOAP -->
-        <dependency>
-            <groupId>jakarta.xml.ws</groupId>
-            <artifactId>jakarta.xml.ws-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <!-- Implémentation de JAX-WS (Metro) -->
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>4.0.1</version>
-        </dependency>
+        <!-- Swing est inclus dans Java, pas besoin d'ajouter une dépendance -->
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Permet de compiler et exécuter un main -->
+            <!-- Plugin pour exécuter l'application Java -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <goals><goal>java</goal></goals>
-                    </execution>
-                </executions>
                 <configuration>
-                    <mainClass>com.actualite.client.Main</mainClass>
+                    <mainClass>sn.esp.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
