@@ -36,7 +36,8 @@ public class SecurityConfig
                     "/auth/**",
                     "/api/articles/**",
                     "/api/categories/**",
-                    "/api/images/**"
+                    "/api/images/**",
+                    "/ws/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )

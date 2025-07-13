@@ -97,10 +97,54 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Dépendance Spring Web Services -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<!-- Pour générer les classes Java à partir du XSD -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+
+		<!-- Plugin JAXB pour générer automatiquement les classes à partir du fichier XSD -->
+		<dependency>
+			<groupId>org.jvnet.jaxb2.maven2</groupId>
+			<artifactId>maven-jaxb2-plugin</artifactId>
+			<version>0.14.0</version>
+		</dependency>
+
+		<!-- Pour compiler les classes JAXB générées -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
 
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -126,7 +170,45 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.5.0</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+							<outputDirectory>${project.build.directory}/generated-sources/jaxb</outputDirectory>
+							<packageName>sn.esp.service_web.soap.wsdl</packageName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>2.5.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e3ddd939-40b5-42c8-b709-9fd9af159a04" activeEnvironment="Default" name="TestUtilisateur" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7d7be7ea-498b-4446-9446-cd8c38a5a7d2" wsaVersion="NONE" name="UtilisateurPortSoap11" type="wsdl" bindingName="{http://sn.esp.service_web/gen}UtilisateurPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/ws/utilisateurWsdl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/ws/utilisateurWsdl.wsdl"><con:part><con:url>http://localhost:8081/ws/utilisateurWsdl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sn.esp.service_web/gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://sn.esp.service_web/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sn.esp.service_web/gen">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://sn.esp.service_web/gen" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetUtilisateurRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUtilisateurResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUtilisateurRequest">
+    <wsdl:part element="tns:GetUtilisateurRequest" name="GetUtilisateurRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUtilisateurResponse">
+    <wsdl:part element="tns:GetUtilisateurResponse" name="GetUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UtilisateurPort">
+    <wsdl:operation name="GetUtilisateur">
+      <wsdl:input message="tns:GetUtilisateurRequest" name="GetUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:GetUtilisateurResponse" name="GetUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UtilisateurPortSoap11" type="tns:UtilisateurPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetUtilisateurRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UtilisateurPortService">
+    <wsdl:port binding="tns:UtilisateurPortSoap11" name="UtilisateurPortSoap11">
+      <soap:address location="http://localhost:8081/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/ws</con:endpoint></con:endpoints><con:operation id="7390fe4f-bd82-42c1-9af6-787a1299d051" isOneWay="false" action="" name="GetUtilisateur" bindingOperationName="GetUtilisateur" type="Request-Response" outputName="GetUtilisateurResponse" inputName="GetUtilisateurRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0051c078-d9c6-4bb5-bc91-eff73e6aef20" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://sn.esp.service_web/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:GetUtilisateurRequest>\r
+         <gen:email>lo@esp.sn</gen:email>\r
+      </gen:GetUtilisateurRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sn.esp.service_web/gen/UtilisateurPort/GetUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

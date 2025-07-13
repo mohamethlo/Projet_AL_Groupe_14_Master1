@@ -10,5 +10,6 @@ public interface UtilisateurService
     List<Utilisateur> lister();
     Utilisateur modifier(Long id, Utilisateur utilisateur);
     void supprimer(Long id);
+    Utilisateur getUtilisateurById(Long id);
 }
 
