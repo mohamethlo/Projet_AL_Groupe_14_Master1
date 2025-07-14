@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="1b874e9f-1c3e-4e8c-a5f8-fbae05834b93" activeEnvironment="Default" name="UtilisateurService" resourceRoot="" soapui-version="5.8.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="d84674e8-a754-4430-8c2d-4f4880a3a250" wsaVersion="NONE" name="UtilisateurPortSoap11" type="wsdl" bindingName="{http://sn.esp.service_web/gen}UtilisateurPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/ws/utilisateurWsdl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/ws/utilisateurWsdl.wsdl"><con:part><con:url>http://localhost:8081/ws/utilisateurWsdl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://sn.esp.service_web/gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://sn.esp.service_web/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sn.esp.service_web/gen">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://sn.esp.service_web/gen" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GetUtilisateurRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUtilisateurResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--CreateUtilisateurRequest & Response-->
+      <xs:element name="CreateUtilisateurRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="motDePasse" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateUtilisateurResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--UpdateUtilisateurRequest & Response-->
+      <xs:element name="UpdateUtilisateurRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="motDePasse" type="xs:string"/>
+            <xs:element name="role" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateUtilisateurResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--DeleteUtilisateurRequest & Response-->
+      <xs:element name="DeleteUtilisateurRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteUtilisateurResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="message" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUtilisateurRequest">
+    <wsdl:part element="tns:GetUtilisateurRequest" name="GetUtilisateurRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateUtilisateurRequest">
+    <wsdl:part element="tns:CreateUtilisateurRequest" name="CreateUtilisateurRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUtilisateurRequest">
+    <wsdl:part element="tns:DeleteUtilisateurRequest" name="DeleteUtilisateurRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteUtilisateurResponse">
+    <wsdl:part element="tns:DeleteUtilisateurResponse" name="DeleteUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetUtilisateurResponse">
+    <wsdl:part element="tns:GetUtilisateurResponse" name="GetUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateUtilisateurRequest">
+    <wsdl:part element="tns:UpdateUtilisateurRequest" name="UpdateUtilisateurRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UpdateUtilisateurResponse">
+    <wsdl:part element="tns:UpdateUtilisateurResponse" name="UpdateUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateUtilisateurResponse">
+    <wsdl:part element="tns:CreateUtilisateurResponse" name="CreateUtilisateurResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UtilisateurPort">
+    <wsdl:operation name="GetUtilisateur">
+      <wsdl:input message="tns:GetUtilisateurRequest" name="GetUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:GetUtilisateurResponse" name="GetUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUtilisateur">
+      <wsdl:input message="tns:CreateUtilisateurRequest" name="CreateUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:CreateUtilisateurResponse" name="CreateUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUtilisateur">
+      <wsdl:input message="tns:DeleteUtilisateurRequest" name="DeleteUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:DeleteUtilisateurResponse" name="DeleteUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUtilisateur">
+      <wsdl:input message="tns:UpdateUtilisateurRequest" name="UpdateUtilisateurRequest"></wsdl:input>
+      <wsdl:output message="tns:UpdateUtilisateurResponse" name="UpdateUtilisateurResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UtilisateurPortSoap11" type="tns:UtilisateurPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetUtilisateurRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreateUtilisateurRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteUtilisateurRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DeleteUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUtilisateur">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UpdateUtilisateurRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="UpdateUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UtilisateurPortService">
+    <wsdl:port binding="tns:UtilisateurPortSoap11" name="UtilisateurPortSoap11">
+      <soap:address location="http://localhost:8081/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/ws</con:endpoint></con:endpoints><con:operation id="bfeeb08f-e43f-41a3-879a-971d7237b2e1" isOneWay="false" action="" name="CreateUtilisateur" bindingOperationName="CreateUtilisateur" type="Request-Response" outputName="CreateUtilisateurResponse" inputName="CreateUtilisateurRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ff740e11-e452-48f0-a793-5f189e30d02e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://sn.esp.service_web/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:CreateUtilisateurRequest>\r
+         <gen:nom>?</gen:nom>\r
+         <gen:prenom>?</gen:prenom>\r
+         <gen:email>?</gen:email>\r
+         <gen:motDePasse>?</gen:motDePasse>\r
+         <gen:role>?</gen:role>\r
+      </gen:CreateUtilisateurRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sn.esp.service_web/gen/UtilisateurPort/CreateUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3f901b97-ec5b-43d6-9e78-f3c27971f6f5" isOneWay="false" action="" name="DeleteUtilisateur" bindingOperationName="DeleteUtilisateur" type="Request-Response" outputName="DeleteUtilisateurResponse" inputName="DeleteUtilisateurRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f14654d1-eabe-40de-83bd-afc19623bfe5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://sn.esp.service_web/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:DeleteUtilisateurRequest>\r
+         <gen:email>?</gen:email>\r
+      </gen:DeleteUtilisateurRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sn.esp.service_web/gen/UtilisateurPort/DeleteUtilisateurRequest"/></con:call></con:operation><con:operation id="a74bb352-420a-449f-92aa-f5cd0bd75bd7" isOneWay="false" action="" name="GetUtilisateur" bindingOperationName="GetUtilisateur" type="Request-Response" outputName="GetUtilisateurResponse" inputName="GetUtilisateurRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e7fb592e-10ce-4431-b66e-3ab23f4c6cd2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://sn.esp.service_web/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:GetUtilisateurRequest>\r
+         <gen:email>?</gen:email>\r
+      </gen:GetUtilisateurRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sn.esp.service_web/gen/UtilisateurPort/GetUtilisateurRequest"/></con:call></con:operation><con:operation id="f6647b04-cee6-488e-8116-af68a15886e7" isOneWay="false" action="" name="UpdateUtilisateur" bindingOperationName="UpdateUtilisateur" type="Request-Response" outputName="UpdateUtilisateurResponse" inputName="UpdateUtilisateurRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4b0bde03-8143-4778-9754-88ece7bcdbe6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gen="http://sn.esp.service_web/gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <gen:UpdateUtilisateurRequest>\r
+         <gen:email>?</gen:email>\r
+         <gen:nom>?</gen:nom>\r
+         <gen:prenom>?</gen:prenom>\r
+         <gen:motDePasse>?</gen:motDePasse>\r
+         <gen:role>?</gen:role>\r
+      </gen:UpdateUtilisateurRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sn.esp.service_web/gen/UtilisateurPort/UpdateUtilisateurRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

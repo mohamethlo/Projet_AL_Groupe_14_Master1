@@ -3,6 +3,7 @@
            xmlns:tns="http://sn.esp.service_web/gen"
            elementFormDefault="qualified">
 
+  <!-- CreateUtilisateurRequest & Response -->
   <xs:element name="GetUtilisateurRequest">
     <xs:complexType>
       <xs:sequence>
@@ -17,6 +18,65 @@
         <xs:element name="nom" type="xs:string"/>
         <xs:element name="prenom" type="xs:string"/>
         <xs:element name="role" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- CreateUtilisateurRequest & Response -->
+  <xs:element name="CreateUtilisateurRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nom" type="xs:string"/>
+        <xs:element name="prenom" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+        <xs:element name="motDePasse" type="xs:string"/>
+        <xs:element name="role" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CreateUtilisateurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="message" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- UpdateUtilisateurRequest & Response -->
+  <xs:element name="UpdateUtilisateurRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="email" type="xs:string"/>
+        <xs:element name="nom" type="xs:string"/>
+        <xs:element name="prenom" type="xs:string"/>
+        <xs:element name="motDePasse" type="xs:string"/>
+        <xs:element name="role" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="UpdateUtilisateurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="message" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- DeleteUtilisateurRequest & Response -->
+  <xs:element name="DeleteUtilisateurRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="email" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DeleteUtilisateurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="message" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
