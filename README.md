@@ -229,3 +229,8 @@ mvn clean install
 mvn exec:java -Dexec.mainClass="Main"
 
 ```
+#### frontend
+```bash
+npm start 
+
+```
