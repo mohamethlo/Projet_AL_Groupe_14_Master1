@@ -27,6 +27,14 @@ public class UtilisateurController
         }
     }
 
+    // Methode qui permet de recuperrer la liste de tous les utilisateurs
+    public List<GetAllUtilisateursResponse.Utilisateurs> getListeUtilisateurs() 
+    {
+        GetAllUtilisateursRequest request = new GetAllUtilisateursRequest();
+        GetAllUtilisateursResponse response = utilisateurPort.getAllUtilisateurs(request);
+        return response.getUtilisateurs(); 
+    }
+
     // Methode qui permet de lire un utilisateur par email
     public GetUtilisateurResponse getUtilisateur(String email) 
     {
@@ -60,10 +68,20 @@ public class UtilisateurController
     }
 
     // Methode qui permet de Supprimer un utilisateur par email
-    public DeleteUtilisateurResponse deleteUtilisateur(String email) 
+    public boolean supprimerUtilisateur(String email) 
     {
-        DeleteUtilisateurRequest request = new DeleteUtilisateurRequest();
-        request.setEmail(email);
-        return utilisateurPort.deleteUtilisateur(request);
+        try 
+        {
+            DeleteUtilisateurRequest request = new DeleteUtilisateurRequest();
+            request.setEmail(email);
+            DeleteUtilisateurResponse response = utilisateurPort.deleteUtilisateur(request);
+            return response.getMessage().contains("succes");
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
+
 }

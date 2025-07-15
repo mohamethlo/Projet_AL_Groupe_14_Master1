@@ -48,6 +48,24 @@
 
     <build>
         <plugins>
+
+            <!-- Plugin pour exécuter l'application Java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>sn.esp.Main</mainClass> <!-- Remplace par ton nom de classe main -->
+                </configuration>
+            </plugin>
+
             <!-- Génération des classes SOAP à partir du WSDL -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

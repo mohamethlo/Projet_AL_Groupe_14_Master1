@@ -15,7 +15,18 @@ public class DashboardView extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 600);
         setLocationRelativeTo(null);
+        
+        initComponents();
 
+        UtilisateurController controller = new UtilisateurController();
+        List<GetAllUtilisateursResponse.Utilisateurs> utilisateurs = controller.getListeUtilisateurs();
+        panelListeUtilisateurs.afficherListeEditeurs(utilisateurs);
+
+    }
+
+    // Methode qui permet d'initialiser les composant
+    public void initComponents()
+    {
         Color bleuPrincipal = new Color(0, 120, 215);       
         Color fondClair = new Color(230, 240, 255);         
         Color blanc = Color.WHITE;
@@ -48,7 +59,7 @@ public class DashboardView extends JFrame
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         innerPanel.add(contentPanel, BorderLayout.CENTER);
 
-        // MENU LATÉRAL
+        // MENU LATERAL
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
         menuPanel.setBackground(blanc);
@@ -66,14 +77,14 @@ public class DashboardView extends JFrame
 
         contentPanel.add(menuPanel, BorderLayout.WEST);
 
-        // ZONE DE DONNÉES DYNAMIQUE
+        // ZONE DE DONNEES DYNAMIQUE
         cardLayout = new CardLayout();
         dynamicContentPanel = new JPanel(cardLayout);
         dynamicContentPanel.setBackground(fondClair);
         dynamicContentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         contentPanel.add(dynamicContentPanel, BorderLayout.CENTER);
 
-        // Création et ajout des panels dynamiques
+        // Creation et ajout des panels dynamiques
         PanelListeUtilisateurs panelEtudiants = new PanelListeUtilisateurs(bleuPrincipal, fondClair);
         PanelListeAdministrateurs panelAdmin = new PanelListeAdministrateurs(bleuPrincipal, fondClair);
         PanelAjoutUtilisateur panelAjout = new PanelAjoutUtilisateur(bleuPrincipal, fondClair);
@@ -96,7 +107,7 @@ public class DashboardView extends JFrame
             menuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
 
-        // Afficher la vue par défaut
+        // Afficher la vue par defaut
         cardLayout.show(dynamicContentPanel, "liste_utilisateurs");
     }
 

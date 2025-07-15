@@ -3,7 +3,7 @@
            xmlns:tns="http://sn.esp.service_web/gen"
            elementFormDefault="qualified">
 
-  <!-- CreateUtilisateurRequest & Response -->
+  <!-- GetUtilisateurRequest & Response -->
   <xs:element name="GetUtilisateurRequest">
     <xs:complexType>
       <xs:sequence>
@@ -21,6 +21,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+
+  <!-- GetAllUtilisateursRequest -->
+  <xs:element name="GetAllUtilisateursRequest">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- GetAllUtilisateursResponse -->
+  <xs:element name="GetAllUtilisateursResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="utilisateurs" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nom" type="xs:string"/>
+              <xs:element name="prenom" type="xs:string"/>
+              <xs:element name="email" type="xs:string"/>
+              <xs:element name="role" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
 
   <!-- CreateUtilisateurRequest & Response -->
   <xs:element name="CreateUtilisateurRequest">

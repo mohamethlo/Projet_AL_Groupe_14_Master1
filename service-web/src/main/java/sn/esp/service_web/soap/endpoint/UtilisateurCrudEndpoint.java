@@ -11,6 +11,8 @@ import sn.esp.service_web.entity.Role;
 import sn.esp.service_web.repository.UtilisateurRepository;
 import sn.esp.service_web.soap.wsdl.*;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
@@ -45,6 +47,25 @@ public class UtilisateurCrudEndpoint
 
         QName qName = new QName(NAMESPACE_URI, "CreateUtilisateurResponse");
         return new JAXBElement<>(qName, CreateUtilisateurResponse.class, response);
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "GetAllUtilisateursRequest")
+    @ResponsePayload
+    public GetAllUtilisateursResponse getAllUtilisateurs(@RequestPayload GetAllUtilisateursRequest request)
+    {
+        List<Utilisateur> utilisateurs = utilisateurRepository.findAll();
+
+        GetAllUtilisateursResponse response = new GetAllUtilisateursResponse();
+        for (Utilisateur u : utilisateurs) {
+            GetAllUtilisateursResponse.Utilisateurs item = new GetAllUtilisateursResponse.Utilisateurs();
+            item.setNom(u.getNom());
+            item.setPrenom(u.getPrenom());
+            item.setEmail(u.getEmail());
+            item.setRole(u.getRole().name());
+            response.getUtilisateurs().add(item);
+        }
+
+        return response;
     }
 
     // GetUtilisateur

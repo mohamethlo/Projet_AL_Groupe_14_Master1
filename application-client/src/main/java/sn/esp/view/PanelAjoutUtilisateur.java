@@ -20,6 +20,16 @@ public class PanelAjoutUtilisateur extends JPanel
         setBackground(fondClair);
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
+        initComponents();
+
+        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        btnPanel.setBackground(fondClair);
+        btnPanel.add(ajouterBtn);
+        add(btnPanel, BorderLayout.SOUTH);
+    }
+
+    public void initComponets()
+    {
         // Titre
         JLabel title = new JLabel("Ajout d’un Utilisateur", SwingConstants.CENTER);
         title.setOpaque(true);
@@ -65,10 +75,53 @@ public class PanelAjoutUtilisateur extends JPanel
         ajouterBtn.setBackground(vertPrincipal);
         ajouterBtn.setForeground(Color.WHITE);
         ajouterBtn.setFont(new Font("Arial", Font.BOLD, 14));
-        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnPanel.setBackground(fondClair);
-        btnPanel.add(ajouterBtn);
-        add(btnPanel, BorderLayout.SOUTH);
+        
+
+        ajouterBtn.addActionListener(e -> ajouterUtilisateur());
+    }
+
+    private void ajouterUtilisateur() 
+    {
+        String nom = nomField.getText().trim();
+        String prenom = prenomField.getText().trim();
+        String email = emailField.getText().trim();
+        String mdp = new String(passwordField.getPassword()).trim();
+        String role = roleCombo.getSelectedItem().toString();
+
+        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || mdp.isEmpty()) 
+        {
+            JOptionPane.showMessageDialog(this, "Tous les champs doivent etre remplis.");
+            return;
+        }
+
+        try 
+        {
+            UtilisateurController controller = new UtilisateurController();
+
+            CreateUtilisateurRequest request = new CreateUtilisateurRequest();
+            request.setNom(nom);
+            request.setPrenom(prenom);
+            request.setEmail(email);
+            request.setMotDePasse(mdp);
+            request.setRole(role);
+
+            CreateUtilisateurResponse response = controller.ajouterUtilisateur(request);
+
+            JOptionPane.showMessageDialog(this, response.getMessage());
+
+            // Reinitialiseation des champs
+            nomField.setText("");
+            prenomField.setText("");
+            emailField.setText("");
+            passwordField.setText("");
+            roleCombo.setSelectedIndex(0);
+
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'ajout de l'utilisateur.");
+        }
     }
 
     
